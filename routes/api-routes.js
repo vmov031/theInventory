@@ -13,13 +13,15 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route 
-  app.get("/api/todos", function(req, res) {
+  app.get("/", function(req, res) {
 
   });
 
   // POST route 
-  app.post("/api/todos", function(req, res) {
-
+  app.post("/registration", function(req, res) {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.passwowrd;
   });
 
   // DELETE route 

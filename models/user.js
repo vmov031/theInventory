@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 50]
+      len: [1, 50]
       }
     },
     email: {
@@ -17,7 +17,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: {
-      type: DataTypes.BINARY,
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: [12],
         notEmpty: true

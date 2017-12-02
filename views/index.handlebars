@@ -1,0 +1,38 @@
+{{> header }}
+
+<div class="container">
+
+	<!-- registration -->
+	<h1>{{title}}</h1>
+
+	<form>
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" name="username" class="form-control" placeholder="username">
+		</div>
+
+	<!-- email -->
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" name="email" class="form-control" placeholder="email">
+		</div>
+
+	<!-- password -->
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" name="password" class="form-control" placeholder="password">
+		</div>
+
+	<!-- re-enter password -->
+		<div class="form-group">
+			<label for="password-match">Re-enterPassword</label>
+			<input type="passsword" name="password-match" class="form-control" placeholder="password">
+		</div>
+
+		<!-- submit button -->
+		<button type="submit" class="btn btn-priimary">Submit</button>
+	</form>
+
+		</div>
+
+{{> footer }}
