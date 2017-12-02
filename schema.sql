@@ -10,3 +10,5 @@ CREATE TABLE users(
 	password BINARY(60),
 	PRIMARY KEY (id)
 );
+
+-- Not sure if the use of 'BINARY'is correct --
