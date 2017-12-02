@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Inventory Registration</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+
+	<!-- registration -->
+	<h1>{{title}}</h1>
+
+	<form>
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" name="username" class="form-control" placeholder="username">
+		</div>
+
+	<!-- email -->
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" name="email" class="form-control" placeholder="email">
+		</div>
+
+	<!-- password -->
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" name="password" class="form-control" placeholder="password">
+		</div>
+
+	<!-- re-enter password -->
+		<div class="form-group">
+			<label for="password-match">Re-enterPassword</label>
+			<input type="passsword" name="password-match" class="form-control" placeholder="password">
+		</div>
+
+		<!-- submit button -->
+		<button type="submit" class="btn btn-priimary">Submit</button>
+	</form>
+
+</div>
+
+<!-- Custom Script -->
+<script src="js/cms.js" type="text/javascript"></script>
+
+</body>
+
+</html>
