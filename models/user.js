@@ -8,13 +8,18 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     email: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
-      len: [1, 50]
+      validate:{
+        isEmail: true
+      }
     },
     password: {
-      type: DataTypes.STRING,
-      len: [12]
+      type: DataTypes.BINARY,
+      validate: {
+        len: [12],
+        notEmpty: true
+      }
     }
   });
   return User;
