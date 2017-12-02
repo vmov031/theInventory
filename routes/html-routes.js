@@ -17,10 +17,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  // Route to the cms page
-  // app.get("/cms", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/cms.html"));
-  // });
+  // Route to the registration page
+  app.get("/registration", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/registration.html"));
+  });
 
   // blog route loads blog.html
   // app.get("/blog", function(req, res) {

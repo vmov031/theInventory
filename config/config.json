@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "",
-    "database": "todolist",
+    "password": "Calamigos2015",
+    "database": "inventory",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
