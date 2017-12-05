@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       len: [1],
       notEmpty: true
       }
-    }
+    },
     total: {
       type: DataTypes.INTEGER,
       allowNull: false,

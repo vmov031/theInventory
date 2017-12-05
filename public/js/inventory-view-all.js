@@ -1,4 +1,16 @@
-$(document).ready(function() {
+// $(document).ready(function() {
+var mysql = require("mysql");
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+
+  user: "root",
+
+  password: "Calamigos2015",
+  database: "tropical_inventory"
+});
+
 
     function listInventory() {
         var query = "SELECT * FROM inventory;"
@@ -26,4 +38,4 @@ $(document).ready(function() {
 
 listInventory()
 
-});
+// });
