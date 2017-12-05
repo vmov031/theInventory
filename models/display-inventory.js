@@ -27,24 +27,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1,500],
-        notEmpty: true
+      len: [1,500],
+      notEmpty: true
       }
     },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        len: [1],
-        notEmpty: true
+      len: [1],
+      notEmpty: true
       }
     }
     total: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        len: [1],
-        notEmpty: true
+      len: [1],
+      notEmpty: true
       }
     }
   });
