@@ -1,3 +1,8 @@
+-- Drops the tropical_inventory if it exists currently --
+DROP DATABASE IF EXISTS tropical_inventory;
+-- Creates the "tropical_inventory" database --
+CREATE DATABASE tropical_inventory;
+
 -- connected to user login page --
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
@@ -9,11 +14,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
-
--- Drops the tropical_inventory if it exists currently --
-DROP DATABASE IF EXISTS tropical_inventory;
--- Creates the "tropical_inventory" database --
-CREATE DATABASE tropical_inventory;
 
 -- Creates the "inventory" table and column names --
 CREATE TABLE inventory(
