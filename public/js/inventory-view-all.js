@@ -21,7 +21,7 @@ module.exports = function (app) {
                 console.log(
                     "\nId: " + res[i].id +
                     "||" +
-                    "Product_Name: " + res[i].product_name +
+                    "Product Code: " + res[i].product_code +
                     "||" +
                     "Description: " + res[i].description +
                     "||" +
@@ -33,6 +33,14 @@ module.exports = function (app) {
                     "||" +
                     "Total: " + res[i].total
                 );
+
+                $(".inventory-container > tbody").prepend("<tr><td>" + res[i].product_code + 
+                    "</td><td>" + res[i].description + 
+                    "</td><td>" + res[i].SF_Box + 
+                    "</td><td>" + res[i].dimensions + 
+                    "</td><td>" + res[i].quantity + 
+                    "</td><td>" + res[i].total + 
+                    "</td></tr>");
             }
 
         }); //end: query function
