@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE test;
+use test;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `first_name` text NOT NULL,
