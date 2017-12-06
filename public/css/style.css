@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -1246,3 +1247,11 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 /*# sourceMappingURL=style.css.map */
+=======
+body {
+    background-image: url("photo1.jpeg");
+    background-size:     cover;                    
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+>>>>>>> ea2b305be48c72df883255b7ff17927f5b5d044b
