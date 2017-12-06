@@ -1,17 +1,19 @@
-// $(document).ready(function() {
-var mysql = require("mysql");
+$(document).ready(function() {
+// var mysql = require("mysql");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306,
 
-  user: "root",
+//   user: "root",
 
-  password: "Calamigos2015",
-  database: "tropical_inventory"
-});
+//   password: "Calamigos2015",
+//   database: "tropical_inventory"
+// });
 
 
+
+module.exports = function (app) {
     function listInventory() {
         var query = "SELECT * FROM inventory;"
         connection.query(query, function(err, res) {
@@ -35,7 +37,6 @@ var connection = mysql.createConnection({
 
         }); //end: query function
     } //end: listProducts function
-
 listInventory()
 
 // });

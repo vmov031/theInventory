@@ -22,7 +22,10 @@ app.use(express.static("public"));
 // =============================================================
 // require("./routes/index.js")(app);
 // require("./routes/user.js")(app);
-require("./public/js/inventory-view-all.js")(app);
+// require("./public/js/inventory-view-all.js")(app);
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/user.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

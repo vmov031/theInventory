@@ -6,10 +6,12 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the todos
-  app.get("/api/inventory-view-all", function(req, res) {
+  app.get("/api/display-inventory", function(req, res) {
     // findAll returns all entries for a table when used with no options
-    db.Inventory.findAll({}).then(function(dbTInventory) {
+    db.Inventory.findAll({}).then(function(dbInventory) {
       // We have access to the todos as an argument inside of the callback function
-      res.json(dbTInventory);
+      res.json(dbInventory);
     });
   });
+
+};
