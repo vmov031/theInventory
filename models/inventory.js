@@ -39,6 +39,14 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
+    collection: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1],
+        notEmpty: false
+      }
+    },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
