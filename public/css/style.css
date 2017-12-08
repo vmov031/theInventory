@@ -23,3 +23,7 @@ body {
 a {
 	color: #8bc63f;
 }
+
+#logo {
+	padding-right: 50px;
+}
