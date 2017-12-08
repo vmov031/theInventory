@@ -21,7 +21,7 @@ function getItems(product_code) {
     if (product_code) {
         product_code = "/?product_code=" + product_code;
     }
-    $.get("/api/invesntory-view-all" + product_code, function(data) {
+    $.get("/api/inventory-view-all" + product_code, function(data) {
         console.log("product_code", data);
         product_code = data;
         if (!product_code || !product_code.length) {
