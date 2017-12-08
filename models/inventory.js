@@ -4,11 +4,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-      len: [1, 10]
+        len: [1, 10]
+      }
+    },
+    vendor: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate:{
+        len: [1],
+        notEmpty: false
       }
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate:{
         len: [1],
@@ -27,24 +35,32 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-      len: [1,500],
-      notEmpty: true
+        len: [1,500],
+        notEmpty: true
       }
     },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-      len: [1],
-      notEmpty: true
+        len: [1],
+        notEmpty: true
       }
     },
     total: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-      len: [1],
-      notEmpty: true
+        len: [1],
+        notEmpty: true
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
       }
     }
   });
