@@ -11,10 +11,29 @@ $(document).ready(function() {
 //   database: "tropical_inventory"
 // });
 
+var inventoryContainer = $(".container");
+var columnSelect = $("")
+var url = window.location.search;
+var product_code;
 
+function getItems(product_code) {
+    product_code = product_code || "";
+    if (product_code) {
+        product_code = "/?product_code=" + product_code;
+    }
+    $.get("/api/invesntory-view-all" + product_code, function(data) {
+        console.log("product_code", data);
+        product_code = data;
+        if (!product_code || !product_code.length) {
+            displayEmpty(product_code);
+        }
+        else {
+            // isolate data here
+        }
+    });
+}
+    function listInventory(data) {
 
-module.exports = function (app) {
-    function listInventory() {
         var query = "SELECT * FROM inventory;"
         connection.query(query, function(err, res) {
             for (var i = 0; i < res.length; i++) {
