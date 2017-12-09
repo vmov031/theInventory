@@ -44,6 +44,9 @@ module.exports = function(app) {
       res.json(res);
     });
   });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0d2bab9d73ef0af0f6bace27f1662aff340c8c9b
 
 };

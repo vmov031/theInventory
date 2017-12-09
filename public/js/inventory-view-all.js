@@ -25,22 +25,22 @@ res.render('inventory-view-all', {data: data})
 });
 
 
-function getItems(product_code) {
-    product_code = product_code || "";
-    if (product_code) {
-        product_code = "/?product_code=" + product_code;
-    }
-    $.get("/api/inventory-view-all" + product_code, function(data) {
-        console.log("product_code", data);
-        product_code = data;
-        if (!product_code || !product_code.length) {
-            displayEmpty(product_code);
-        }
-        else {
-            // isolate data here
-        }
-    });
-}
+// function getItems(product_code) {
+//     product_code = product_code || "";
+//     if (product_code) {
+//         product_code = "/?product_code=" + product_code;
+//     }
+//     $.get("/api/inventory-view-all" + product_code, function(data) {
+//         console.log("product_code", data);
+//         product_code = data;
+//         if (!product_code || !product_code.length) {
+//             displayEmpty(product_code);
+//         }
+//         else {
+//             // isolate data here
+//         }
+//     });
+// }
     function listInventory() {
 
         $.get("/api/inventory", function (data) {

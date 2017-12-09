@@ -71,6 +71,39 @@ exports.dashboard = function(req, res, next){
    });       
 };
 
+//-----------------------------------------------orders page functionality----------------------------------------------
+           
+exports.orders = function(req, res){
+
+   var userId = req.session.userId;
+   if(userId == null){
+      res.redirect("/login");
+      return;
+   }
+
+   var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";          
+   db.query(sql, function(err, result){  
+      res.render('orders.ejs',{data:result});
+   });
+};
+
+//-----------------------------------------------inventory page functionality----------------------------------------------
+           
+exports.inventory = function(req, res){
+
+   var userId = req.session.userId;
+   if(userId == null){
+      res.redirect("/login");
+      return;
+   }
+
+   var sql="SELECT * FROM `users` WHERE `id`='"+userId+"'";          
+   db.query(sql, function(err, result){  
+      res.render('inventory.ejs',{data:result});
+   });
+};
+
+
 //-----------------------------------------------stockcontrol page functionality----------------------------------------------
            
 exports.stockcontrol = function(req, res){
