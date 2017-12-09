@@ -64,5 +64,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Inventory.associate = function(models) {
+    Inventory.hasMany(models.History, {
+      onDelete: "cascade"
+    });
+  }
   return Inventory;
 };
