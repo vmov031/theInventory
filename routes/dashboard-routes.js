@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var db = require("../models");
 
 module.exports = function(app) {
@@ -44,6 +44,5 @@ module.exports = function(app) {
       res.json(res);
     });
   });
->>>>>>> c62d58c014fb55d1f01eec9d6318fbb92bc5bca5
 
 };
