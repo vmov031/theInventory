@@ -1,22 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
+  
   var Inventory = sequelize.define("Inventory", {
     product_code: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 10]
-      }
-    },
-    vendor: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate:{
-        len: [1],
-        notEmpty: false
+      len: [1, 10]
       }
     },
     description: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
       validate:{
         len: [1],
@@ -35,48 +28,26 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1,500],
-        notEmpty: true
-      }
-    },
-    collection: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [1],
-        notEmpty: false
+      len: [1,500],
+      notEmpty: true
       }
     },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        len: [1],
-        notEmpty: true
+      len: [1],
+      notEmpty: true
       }
     },
     total: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        len: [1],
-        notEmpty: true
-      }
-    },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-        notEmpty: true
+      len: [1],
+      notEmpty: true
       }
     }
   });
-
-  Inventory.associate = function(models) {
-    Inventory.hasMany(models.History, {
-      onDelete: "cascade"
-    });
-  }
   return Inventory;
 };

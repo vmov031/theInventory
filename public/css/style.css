@@ -1246,10 +1246,18 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   opacity: 0;
 }
 
+<<<<<<< HEAD
+/*# sourceMappingURL=style.css.map */
+
+=======
+>>>>>>> 269e412d23603ea085643dfe8ba64b78d2c8e7ed
 body {
     background-image: url("photo1.jpeg");
     background-size:     cover;                    
     background-repeat:   no-repeat;
     background-position: center center; 
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 269e412d23603ea085643dfe8ba64b78d2c8e7ed
