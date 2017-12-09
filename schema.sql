@@ -3,6 +3,8 @@ DROP DATABASE IF EXISTS tropical_inventory;
 -- Creates the "tropical_inventory" database --
 CREATE DATABASE tropical_inventory;
 
+USE tropical_inventory;
+
 
 
 -- -- connected to user login page --

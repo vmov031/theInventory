@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var History = sequelize.define("History", {
-     product_name: {
+     id: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -23,7 +23,23 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    date: {
+    month: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      len: [1],
+      notEmpty: true
+      }
+    },
+     date: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+      len: [1],
+      notEmpty: true
+      }
+    },
+     year: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -31,6 +47,7 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     }
+
   });
   return History;
 };
