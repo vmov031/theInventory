@@ -14,7 +14,7 @@ var bodyParser=require("body-parser");
 var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
-              password : 'Calamigos2015',
+              password : '',
               database : 'tropical_inventory'
             });
  
