@@ -15,11 +15,16 @@ var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
               password : '',
-              database : 'test'
+
+              database : 'tropical_inventory'
+
             });
  
 connection.connect();
- 
+
+// Requiring our models for syncing
+var db = require("./models");
+
 global.db = connection;
  
 // all environments
@@ -46,7 +51,9 @@ app.get('/login', routes.index);//call for login page
 app.post('/login', user.login);//call for login post
 app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
-app.get('/home/profile',user.profile);//to render users profile
+// app.get('/home/profile',user.profile);//to render users profile
 app.get('/home/stockcontrol',user.stockcontrol);
+app.get('/home/inventory',user.inventory);
+app.get('/home/orders',user.orders);
 //Middleware
 app.listen(8080)
