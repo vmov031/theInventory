@@ -19,7 +19,10 @@ var connection = mysql.createConnection({
             });
  
 connection.connect();
- 
+
+// Requiring our models for syncing
+var db = require("./models");
+
 global.db = connection;
  
 // all environments
