@@ -6,8 +6,16 @@
 // var app = express();
 // var PORT = process.env.PORT || 8080;
 
+
+// Requiring our models for syncing
+var db = require("./models");
+const Sequelize = require('sequelize');
+
+const op = Sequelize.Op;
+
 // // Requiring our models for syncing
 // var db = require("./models");
+
 
 // // Sets up the Express app to handle data parsing
 // app.use(bodyParser.json());
@@ -17,6 +25,26 @@
 
 // // Static directory
 // app.use(express.static("public"));
+
+
+// Routes
+
+// =============================================================
+// require("./routes/index.js")(app);
+// require("./routes/user.js")(app);
+// require("./public/js/inventory-view-all.js")(app);
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+// require("./routes/user.js")(app);
+require("./routes/api-routes.js")(app);
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({}).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
 
 // // Routes
 // // =============================================================
@@ -34,3 +62,4 @@
 //     console.log("App listening on PORT " + PORT);
 //   });
 // });
+

@@ -14,4 +14,17 @@ module.exports = function(app) {
     });
   });
 
+    app.get("/api/dashboard", function(req, res) {
+    // findAll returns all entries in a specific 
+    db.Inventory.findAll({
+    	where: {
+    		id: [2,4]
+      
+    	},
+    }).then(function(data) {
+
+      res.json(data);
+    });
+  });
+
 };
