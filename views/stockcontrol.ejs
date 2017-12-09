@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jannaheader.css" />
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- include sidebar %>
+
+<!--Location Selection-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-1">From: </div>
+                <div class="dropdown col-xs-6 col-sm-4">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-1">To: </div>
+                <div class="dropdown col-xs-6 col-sm-4">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Location
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+<!--Stock Transfer Form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Type in Items to Transfer Below:</div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                    </td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                    </td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                    </td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                    </td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                    </td>
+                                    <td>
+                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--Transfer Button-->
+        <div class="container" align="center">
+            <button type="button" class="btn btn-default">Transfer Inventory</button>
+        </div>
+        <%- include footer %>
