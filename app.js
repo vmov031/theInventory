@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
               password : '',
-              database : 'test'
+              database : 'tropical_database'
             });
  
 connection.connect();
