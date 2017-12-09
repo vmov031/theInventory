@@ -4,23 +4,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-      len: [1, 10]
+        len: [1, 10]
       }
     },
       quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-      len: [1],
-      notEmpty: true
+        len: [1],
+        notEmpty: true
+      }
+    },
+      month: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+        notEmpty: true
       }
     },
     date: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-      len: [1],
-      notEmpty: true
+        len: [1],
+        notEmpty: true
       }
     }
   });
