@@ -15,11 +15,16 @@ var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
               password : '',
-              database : 'tropical_database'
+
+              database : 'tropical_inventory'
+
             });
  
 connection.connect();
- 
+
+// Requiring our models for syncing
+// var db = require("./models");
+
 global.db = connection;
  
 // all environments
