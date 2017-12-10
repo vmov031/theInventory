@@ -5,15 +5,6 @@ $(document).ready(function() {
 // var url = window.location.search;
 // var product_code;
 
-// var Inventory = {
-//     product_code: product_code.val().trim(),
-//     description: description.val().trim(),
-//     SF_Box: SF_Box.val().trim(),
-//     dimension: dimension.val().trim(),
-//     quantity: quantity.val().trim(),
-//     total: total.val().trim()
-// };
-
 // console.log(Inventory);
 
 // Inventory.findAll({
@@ -30,7 +21,7 @@ $(document).ready(function() {
 //     if (product_code) {
 //         product_code = "/?product_code=" + product_code;
 //     }
-//     $.get("/api/inventory-view-all" + product_code, function(data) {
+//     $.get("/api/inventory" + product_code, function(data) {
 //         console.log("product_code", data);
 //         product_code = data;
 //         if (!product_code || !product_code.length) {
@@ -55,7 +46,7 @@ function listInventory() {
              // dimension.val(data.dimension),
              // quantity.val(data.quantity),
              // total.val(data.total)
-        })
+        });
    
     } 
 listInventory()
