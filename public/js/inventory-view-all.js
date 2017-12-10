@@ -1,28 +1,28 @@
 $(document).ready(function() {
 
-var inventoryContainer = $(".container");
-var columnSelect = $("")
-var url = window.location.search;
-var product_code;
+// var inventoryContainer = $(".container");
+// var columnSelect = $("")
+// var url = window.location.search;
+// var product_code;
 
-var Inventory = {
-    product_code: product_code.val().trim(),
-    description: description.val().trim(),
-    SF_Box: SF_Box.val().trim(),
-    dimension: dimension.val().trim(),
-    quantity: quantity.val().trim(),
-    total: total.val().trim()
-};
+// var Inventory = {
+//     product_code: product_code.val().trim(),
+//     description: description.val().trim(),
+//     SF_Box: SF_Box.val().trim(),
+//     dimension: dimension.val().trim(),
+//     quantity: quantity.val().trim(),
+//     total: total.val().trim()
+// };
 
-console.log(Inventory);
+// console.log(Inventory);
 
-Inventory.findAll({
-    where:{id: id},
-    attributes: ['product_code', 'description', 'SF_Box', 'dimension', 'quantity', 'total']
+// Inventory.findAll({
+//     where:{id: id},
+//     attributes: ['product_code', 'description', 'SF_Box', 'dimension', 'quantity', 'total']
 
-console.log(data);
-res.render('inventory-view-all', {data: data})
-});
+// console.log(data);
+// res.render('inventory-view-all', {data: data})
+// });
 
 
 // function getItems(product_code) {
@@ -41,15 +41,20 @@ res.render('inventory-view-all', {data: data})
 //         }
 //     });
 // }
-    function listInventory() {
+
+var inventory; 
+
+function listInventory() {
 
         $.get("/api/inventory", function (data) {
-             product_code.val(data.product_code),
-             description.val(data.description),
-             SF_Box.val(data.SF_Box),
-             dimension.val(data.dimension),
-             quantity.val(data.quantity),
-             total.val(data.total)
+            console.lo("items: " + data);
+            inventory = data;
+             // product_code.val(data.product_code),
+             // description.val(data.description),
+             // SF_Box.val(data.SF_Box),
+             // dimension.val(data.dimension),
+             // quantity.val(data.quantity),
+             // total.val(data.total)
         })
    
     } 
