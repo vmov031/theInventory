@@ -1,27 +1,50 @@
+//insert new user into users table
+var db = require("../models");
+
+//routes
+module.exports = function(app) {
+     // POST route for saving a new post
+  app.post("/routes/user", function(req, res) {
+    console.log(req.body);
+    db.User.create({
+      username: req.body.username,
+      title: req.body.title,
+      email: req.body.email,
+      phone: req.body.phone,
+      photoURL: req.body.photoURL,
+      password: req.body.password,
+    })
+    .then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+}
+
 
 //---------------------------------------------signup page call------------------------------------------------------
-exports.signup = function(req, res){
-   message = '';
-   if(req.method == "POST"){
-      var post  = req.body;
-      var name= post.user_name;
-      var pass= post.password;
-      var fname= post.first_name;
-      var lname= post.last_name;
-      var mob= post.mob_no;
+// exports.signup = function(req, res){
+//    message = '';
+//    if(req.method == "POST"){
+//       var post  = req.body;
+//       var username= post.username;
+//       var title= post.title;
+//       var email= post.email;
+//       var phone= post.phone;
+//       var password= post.password;
+//       var photoURL= post.photoURL;
 
-      var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+//       var sql = "INSERT INTO `users`(`username`,`title`,`email`,`phone`, `password`, `photoURL`,`NOW()`,`NOW()`) VALUES ('" + username + "','" + title + "','" + email + "','" + phone + "','" + password + "','" + photoURL + "')";
 
-      var query = db.query(sql, function(err, result) {
+//       var query = db.query(sql, function(err, result) {
 
-         message = "Succesfully! Your account has been created.";
-         res.render('signup.ejs',{message: message});
-      });
+//          message = "Succesful! Your account has been created.";
+//          res.render('signup.ejs',{message: message});
+//       });
 
-   } else {
-      res.render('signup');
-   }
-};
+//    } else {
+//       res.render('signup');
+//    }
+// };
  
 //-----------------------------------------------login page call------------------------------------------------------
 exports.login = function(req, res){
@@ -30,16 +53,16 @@ exports.login = function(req, res){
 
    if(req.method == "POST"){
       var post  = req.body;
-      var name= post.user_name;
-      var pass= post.password;
+      var username = post.username;
+      var password = post.password;
      
-      var sql="SELECT id, first_name, last_name, user_name FROM `users` WHERE `user_name`='"+name+"' and password = '"+pass+"'";                           
+      var sql = "SELECT id, username, title, email, phone, photoURL FROM `users` WHERE `username`='" + username + "' and password = '" + password +"'";                           
       db.query(sql, function(err, results){      
          if(results.length){
             req.session.userId = results[0].id;
             req.session.user = results[0];
             console.log(results[0].id);
-            res.redirect('/home/dashboard');
+            res.redirect('dashboard.ejs');
          }
          else{
             message = 'Wrong Credentials.';

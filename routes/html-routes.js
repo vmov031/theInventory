@@ -15,7 +15,7 @@ module.exports = function(app) {
   });  
 
   app.get("/inventory", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/inventory-view-all.html"));
+		res.sendFile(path.join(__dirname, "../public/inventory.html"));
 
   });
 
