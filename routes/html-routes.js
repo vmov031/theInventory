@@ -20,7 +20,7 @@ module.exports = function(app) {
   });
 
   app.get("/signup", function (req, res) {
-  		res.sendFile(path.join(__dirname, "../public/signup.ejs"));
+  		res.sendFile(path.join(__dirname, "../views/signup.ejs"));
 
   });
 
