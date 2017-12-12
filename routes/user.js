@@ -1,4 +1,4 @@
-// code from Travel Secure NEEDS TO BE CHANGES
+// code from Travel Secure NEEDS TO BE CHANGES AND NEED TO ADD CONTROLLERS?
 var express = require('express');
 var router  = express.Router();
 
