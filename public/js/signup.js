@@ -77,7 +77,7 @@ $(document).ready(function() {
       return alert("Please don't leave fields blank");
     }
 
-    // If we have an email and password, run the signUpUser function
+    // If we have all fields, run the signUpUser function
     signUpUser(userData.username, userData.title, userData.email, userData.phone, userData.password, userData.photoURL);
     usernameInput.val("");
     titleInput.val("");
@@ -91,14 +91,17 @@ $(document).ready(function() {
 
   // Does a post to the signup route. If succesful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(username, email, password) {
-    $.post("/users/signup", {
+  function signUpUser(username, title, email, phone, password, photoURL) {
+    $.post("/user/signup", {
       username: username,
+      title: title,
       email: email,
-      password: password
+      phone: phone,
+      password: password,
+      photoURL: photoURL,
     }).then(function(data) {
       if (data.duplicateUser) {
-        // Replace with Modal
+        // Replace with Modal NEED TO ADD MODAL
         alert("Sorry, that username has been taken");
       } else {
         window.location = data.redirect;
