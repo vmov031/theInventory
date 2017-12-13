@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
      <script src="https://d3js.org/d3.v4.min.js"></script>
+     <script src="/js/chart2.js"></script>
+     <script src="/js/chart3.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/jannaheader.css" />
 </head>
 
@@ -14,11 +16,11 @@
     <div class="row">
         <div class="col-xs-6 col-sm-3">
         </div>
-        <div class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Total Stock on Hand</div>
+        <div id="stock" class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Total Stock on Hand</div>
         <div class="col-xs-6 col-sm-1"></div>
-        <div class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Inventory to be Received</div>
+        <div id="received" class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Inventory to be Received</div>
         <div class="col-xs-6 col-sm-1"></div>
-        <div class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Inventory to be Delivered</div>
+        <div id="delivered" class="col-xs-6 col-sm-2" align="center" style="font-weight: bold;">Inventory to be Delivered</div>
         <div class="col-xs-6 col-sm-1"></div>
     </div>
     <div class="row">
