@@ -8,14 +8,14 @@ var express = require('express')
   , path = require('path');
 //var methodOverride = require('method-override');
 var session = require('express-session'); //needed for Passport authentication
-var passport = require("./config/passport"); //needed for Passport authentication
+// var passport = require("./config/passport"); //needed for Passport authentication
 var app = express();
 var mysql      = require('mysql');
 var bodyParser=require("body-parser");
 var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
-              password : '',
+              password : 'Calamigos2015',
 
               database : 'tropical_inventory'
 
