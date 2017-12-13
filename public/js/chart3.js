@@ -17,7 +17,7 @@ var x = d3.scaleBand()
 var y = d3.scaleLinear()
           .range([height, 0]);
           
-var svg = d3.select("#two").append("svg")
+var svg = d3.select("#three").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
