@@ -2,7 +2,7 @@ $(document).ready(function() {
   // Getting references to our form and input
   var productID = $(".product-id");
   var quantityInput = $(".quantity");
-   var month = $(".month");
+  var month = $(".month");
   var date = $(".date");
   var year = $(".year");
   // Our new orders will go inside the orderContainer

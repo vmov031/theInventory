@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var favorite;
+var favorite;
 
 var w = 400;
 var h = 400;
