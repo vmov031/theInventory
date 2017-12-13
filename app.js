@@ -15,7 +15,7 @@ var bodyParser=require("body-parser");
 var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
-              password : 'Calamigos2015',
+              password : '',
 
               database : 'tropical_inventory'
 
@@ -40,7 +40,7 @@ app.use(session({
               secret: 'keyboard cat',
               resave: false,
               saveUninitialized: true,
-              cookie: { maxAge: 60000 }
+              cookie: { maxAge: 120000000 }
             }))
  
 // development only
