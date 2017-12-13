@@ -1,18 +1,18 @@
 /**
 * Module dependencies.
 */
-var express = require('express')
+const express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 //var methodOverride = require('method-override');
-var session = require('express-session'); //needed for Passport authentication
+const session = require('express-session'); //needed for Passport authentication
 // var passport = require("./config/passport"); //needed for Passport authentication
-var app = express();
-var mysql      = require('mysql');
-var bodyParser=require("body-parser");
-var connection = mysql.createConnection({
+const app = express();
+const mysql      = require('mysql');
+const bodyParser=require("body-parser");
+const connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
               password : '',
