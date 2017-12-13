@@ -42,12 +42,7 @@ $(document).ready(function() {
       method: "PUT",
       url: "/orders",
       data: orderHistory
-    }).then(function() {
-<<<<<<< HEAD
      var newQuantity = quantity.val(data.quantity) + quantityInput;
-=======
-     var newQuantity = quantity.val(data.quantity) - quantityInput;
->>>>>>> 1301262c0a4b839a0b0a2f767668f2dcd2a83873
     }).done(createNewRow);
   }
 
@@ -64,13 +59,7 @@ $(document).ready(function() {
 
 // This function constructs an orderHistory-item row
   function createNewRow(orderHistory) {
-<<<<<<< HEAD
-
   $(".order-container").append( "<li class='list-group-item order-item'>" + orderHistory.productID +" "+ orderHistory.quantityInput + " "+ orderHistory.month + " " + orderHistory.date + " " + orderHistory.year + "</li>")
-=======
-    $(".order-container").append( "<li class='list-group-item order-item'>" + orderHistory.productID +" "+ orderHistory.quantityInput + " "+ orderHistory.month + " " + orderHistory.date + " " + orderHistory.year + "</li>")
->>>>>>> 1301262c0a4b839a0b0a2f767668f2dcd2a83873
-
   }
 
 
