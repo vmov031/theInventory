@@ -1,23 +1,3 @@
-// code from Travel Secure NEEDS TO BE CHANGES AND NEED TO ADD CONTROLLERS?
-var express = require('express');
-var router  = express.Router();
-
-var passport = require("../config/passport");
-var users_controller = require('../controllers/users_controller');
-var isAuthenticated = require("../config/middleware/isAuthenticated");
-
-router.get('/signup', users_controller.registrationPage);
-
-router.get('/sign-out', users_controller.signOutUser);
-
-router.post('/login', passport.authenticate("local"), users_controller.loginUser);
-
-router.post('/signup', users_controller.signUpUser);
-
-module.exports = router;
-
-
-
 //---------------------------------------------signup page call------------------------------------------------------
 exports.signup = function(req, res){
    message = '';
@@ -28,12 +8,13 @@ exports.signup = function(req, res){
       var fname= post.first_name;
       var lname= post.last_name;
       var mob= post.mob_no;
+      var pos= post.position;
 
-      var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+      var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`, `position`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + pos + "')";
 
       var query = db.query(sql, function(err, result) {
 
-         message = "Succesfully! Your account has been created.";
+         message = "Succesful! Your account has been created.";
          res.render('signup.ejs',{message: message});
       });
 
