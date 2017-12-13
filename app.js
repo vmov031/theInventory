@@ -46,7 +46,7 @@ app.use(session({
 // development only
  
 app.get('/', routes.index);//call for main index page
-// app.get('/signup', user.signup);//call for signup page
+app.get('/signup', user.signup);//call for signup page
 // app.post('/signup', user.signup);//call for signup post 
 app.get('/login', routes.index);//call for login page
 // app.post('/login', user.login);//call for login post
