@@ -9,8 +9,9 @@ exports.signup = function(req, res){
       var fname= post.first_name;
       var lname= post.last_name;
       var mob= post.mob_no;
+      var pos= post.position
 
-      var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+      var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password` , `position`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "','" + pos + "')";
 
       var query = db.query(sql, function(err, result) {
 

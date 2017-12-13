@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
               user     : 'root',
               password : '',
 
-              database : 'tropical_inventory'
+              database : 'tropical_inventory1'
 
             });
  
