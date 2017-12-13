@@ -62,40 +62,5 @@ $(document).ready(function() {
 
   }
 
-  $("#search-btn").on("click", function() {
-
-  // save the character they typed into the character-search input
-  var searchedItem = $("#item-serach").val().trim();
-
-  // replace any spaces between that character with no space
-  // (effectively deleting the spaces). Make the string lowercase
-  searchedItem = searchedItem.replace(/\s+/g, "").toLowerCase();
-
-  // run an AJAX GET-request for our servers api,
-  // including the user's character in the url
-   $.get("/api/" + searchedItem, function(data) {
-    // log the data to our console
-    console.log(data);
-    //empty to well-section before adding new content
-    $("#well-section").empty();
-    // if the data is not there, then return an error message
-    if (!data) {
-      $("#well-section").append("<h2> The force is not strong with this one. Your character was not found. </h2>");
-    }
-    // otherwise
-    else {
-      // append the character name
-      $("#well-section").append("<h2>" + data.name + "</h2>");
-      // the role
-      $("#well-section").append("<h3>Role: " + data.role + "</h3>");
-      // the age
-      $("#well-section").append("<h3>Age: " + data.age + "</h3>");
-      // and the force points
-      $("#well-section").append("<h3>Force Points: " + data.forcePoints+ "</h3>");
-    }
-
-  });
-
-});
 
   });

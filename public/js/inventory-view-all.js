@@ -51,4 +51,45 @@ function listInventory() {
     } 
 listInventory()
 
+
+  $("#item-search").on("click", function() {
+
+  // save the character they typed into the character-search input
+  var searchedItem = $("#item-search").val().trim();
+
+  // replace any spaces between that character with no space
+  // (effectively deleting the spaces). Make the string lowercase
+  searchedItem = searchedItem.replace(/\s+/g, "").toLowerCase();
+
+  // run an AJAX GET-request for our servers api,
+  // including the user's character in the url
+   $.get("/api/inventory-view-all" + searchedItem, function(data) {
+    // log the data to our console
+    console.log(data);
+    //empty to well-section before adding new content
+    $(".search-content").empty();
+    // if the data is not there, then return an error message
+    if (!data) {
+      $(".search-content").append("<h2>Item not found.</h2>");
+    }
+    // otherwise
+    else {
+      // append the character name
+      $(".search-content").append("<h3>Product Code:" + data.product_code + "</h3>");
+      // the role
+      $(".search-content").append("<h3>Description: " + data.description + "</h3>");
+      // the age
+      $(".search-content").append("<h3>SF Box: " + data.SF_Box + "</h3>");
+      // and the force points
+      $(".search-content").append("<h3>Dimension: " + data.dimension + "</h3>");
+
+      $(".search-content").append("<h3>Quantity: " + data.quantity + "</h3>");
+
+      $(".search-content").append("<h3>Total: " + data.total + "</h3>");
+    }
+
+  });
+
+});
+
 // });
