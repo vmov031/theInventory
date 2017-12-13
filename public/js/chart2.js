@@ -1,72 +1,77 @@
 $(document).ready(function() {
 
-	var favorite;
+	var data;
 
-var w = 400;
-var h = 400;
+// var data = [{
+//   product: "wine",
+//   val: 5
+// }, {
+//   product: "cheese",
+//   val: 80
+// }, {
+//   product: "plate",
+//   val: 1
+// }, {
+//   product: "fork",
+//   val: 4
+// }, {
+//   product: "eggs",
+//   val: 400
+// }];
 
-var dataset = {key: [], value: [28,5,10,18,40]};
-
-var xScale = d3.scale.ordinal()
-        .domain(d3.range(dataset.value.length))
-        .rangeRoundBands([0, w], 0.05); 
-
-var yScale = d3.scale.linear()
-        .domain([0, d3.max(dataset.value)])
-        .range([0, h-100]);
-
-//Create SVG element
-var svg = d3.select("#two")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h + 20);
-
-svg.append("g")
-   .attr("transform", "translate(0, " + h + ")")
-   .call(d3.svg.axis().orient("bottom").scale(xScale));
-
-//Create bars
-svg.selectAll("rect")
-   .data(dataset.value, function(d) { return d; })
-   .enter()
-   .append("rect")
-   .attr("x", function(d, i) {
-    return xScale(i);
-   })
-   .attr("y", function(d) {
-    return h - yScale(d);
-   })
-   .attr("width", xScale.rangeBand())
-   .attr("height", function(d) {
-    return yScale(d);
-   })
-   .attr("fill", function(d) {
-    return "rgb(0, 0, " + (d * 10) + ")";
-   })
+$.get("home/api/dashboard", function (data){
+  console.log("Favorite items:" + data);
+    favorite = data;
+  });
 
 
-//Create labels
-svg.selectAll("text")
-   .data(dataset.value, function(d) { return d; })
-   .enter()
-   .append("text")
-   .text(function(d) {
-    return d;
-   })
-   .attr("text-anchor", "middle")
-   .attr("x", function(d, i) {
-    return xScale(i) + xScale.rangeBand() / 2;
-   })
-   .attr("y", function(d) {
-    return h - yScale(d) -5;
-   })
-   .attr("font-family", "sans-serif") 
-   .attr("font-size", "11px")
-   .attr("fill", "black");
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 400 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+// set the ranges
+var x = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y = d3.scaleLinear()
+          .range([height, 0]);
+          
+var svg = d3.select("#two").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+  // Scale the range of the data in the domains
+  x.domain(data.map(function(d) { return d.product; }));
+  y.domain([0, d3.max(data, function(d) { return d.val; })]);
+
+  // append the rectangles for the bar chart
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.product); })
+      .attr("width", x.bandwidth())
+      .attr("y", function(d) { return y(d.val); })
+      .attr("height", function(d) { return height - y(d.val); });
+
+  // add the x Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+svg.selectAll("rect").transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 10; })
+    .attr("r", function(d) { return Math.sqrt(d * 1000); });
+
+
    
-$.get("/api/dashboard", function (data){
-	console.log("Favorite items:" + data);
-		favorite = data;
-	});
 
 }
