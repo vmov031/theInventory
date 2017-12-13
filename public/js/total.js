@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var totalOrders;
 	var totalDelieveries;
 
-$.get("home/api/dashboard", function (data){
+$.get("home/api/total", function (data){
   console.log("Favorite items:" + data);
     totalInventory = data;
     
