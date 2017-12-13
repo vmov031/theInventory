@@ -40,15 +40,7 @@ module.exports = function(app) {
 
         db.Inventory.findAll({}).then(function(data) {
           res.json(data);  
-         
-
-          console.log("this may work " + data[1].quantity); 
-
-          for (var i = 0; i < data.length; i++) {
-            total += parseFloat(data[i].quantity);
-             
-          }
-          console.log(total);
+        
         });
     });
 };
