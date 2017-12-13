@@ -7,7 +7,7 @@ module.exports = function(app) {
   });
 
   app.get("/dashboard/:id", function(req, res) {
-  	res.sendFile(path.join(__dirname, "..views/dashboard.ejs"));
+  	res.sendFile(path.join(__dirname, "../views/dashboard.ejs"));
   })
 
   app.get("/profile", function(req, res) {
@@ -15,12 +15,12 @@ module.exports = function(app) {
   });  
 
   app.get("/inventory", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/inventory-view-all.html"));
+		res.sendFile(path.join(__dirname, "../views/inventory.ejs"));
 
   });
 
   app.get("/signup", function (req, res) {
-  		res.sendFile(path.join(__dirname, "../public/signup.ejs"));
+  		res.sendFile(path.join(__dirname, "../views/signup.ejs"));
 
   });
 
