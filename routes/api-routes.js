@@ -1,6 +1,8 @@
 // Requiring models
 var db = require("../models");
 
+var total = 0;
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -15,16 +17,38 @@ module.exports = function(app) {
   });
 
     app.get("/api/dashboard", function(req, res) {
-    // findAll returns all entries in a specific 
-    db.Inventory.findAll({
-    	where: {
-    		id: [2,4]
-      
-    	},
-    }).then(function(data) {
+        // findAll returns all entries in a specific 
+       db.Inventory.findAll({
+            where: {
+                id: [2, 4]
 
-      res.json(data);
+            },
+        }).then(function(data) {
+            res.json(data);
+        });
+        
+
+        db.Inventory.findAll({
+            where: {
+                quantity: {
+                    $lte: 80,
+                }
+            }
+        }).then(function(data) {
+            res.json(data);
+        });
+
+        db.Inventory.findAll({}).then(function(data) {
+          res.json(data);  
+         
+
+          console.log("this may work " + data[1].quantity); 
+
+          for (var i = 0; i < data.length; i++) {
+            total += parseFloat(data[i].quantity);
+             
+          }
+          console.log(total);
+        });
     });
-  });
-
 };
