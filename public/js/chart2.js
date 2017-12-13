@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
+
 	var data;
+
 
 // var data = [{
 //   product: "wine",

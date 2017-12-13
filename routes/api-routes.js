@@ -38,7 +38,7 @@ module.exports = function(app) {
             res.json(data);
         });
 
-           db.Inventory.findAll({}).then(function(data) {
+        db.Inventory.findAll({}).then(function(data) {
           res.json(data);  
          
 
@@ -47,8 +47,8 @@ module.exports = function(app) {
           for (var i = 0; i < data.length; i++) {
             total += parseFloat(data[i].quantity);
              
-        }
-        console.log(total);
+          }
+          console.log(total);
         });
-
+    });
 };
