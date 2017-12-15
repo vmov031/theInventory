@@ -9,7 +9,7 @@ $(document).ready(function() {
         $.get("/api/user")
             .then(function(userInfo){
             	insertUserInfo(userInfo);
-            	console.log(userInfo);
+            	console.log("userInfo: " + userInfo);
             });
             
     }
@@ -17,14 +17,16 @@ $(document).ready(function() {
 
     // Function inserting user info into sidebar.ejs
     function insertUserInfo(userData) {
+        for (var i = 0; i < userData.length; i++) {
         $(".user-info-container").html(
             "<center>" + 
-            "<h1><span id='first-name'>" + userData.first_name + "</span></h1>" +
-            "<h3><span id='last-name'>" + userData.last + "</span></h3>" +
-            "<p>position: <span id='position'><strong>" + userData.position + "</strong></span></p>" +
-            "<p>username: <span id='username'><strong>" + userData.username + "</strong></span></p>" + 
+            "<h1><span id='first-name'>" + userData[0].first_name + "</span></h1>" +
+            "<h3><span id='last-name'>" + userData[0].last_name + "</span></h3>" +
+            "<p>position: <span id='position'><strong>" + userData[0].position + "</strong></span></p>" +
+            "<p>username: <span id='username'><strong>" + userData[0].user_name + "</strong></span></p>" + 
             "</center>"
         );
-        console.log(userData);
+    };
+        console.log("userData: " + userData);
     };
 });
