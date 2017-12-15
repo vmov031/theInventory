@@ -37,8 +37,8 @@ var inventory;
 
 function listInventory() {
 
-        $.get("/api/inventory", function (data) {
-            console.lo("items: " + data);
+        $.get("/home/api/inventory", function (data) {
+            console.log("items: " + data);
             inventory = data;
              // product_code.val(data.product_code),
              // description.val(data.description),
@@ -46,7 +46,7 @@ function listInventory() {
              // dimension.val(data.dimension),
              // quantity.val(data.quantity),
              // total.val(data.total)
-        });
+        }); 
    
     } 
 listInventory()
@@ -61,8 +61,7 @@ listInventory()
   // (effectively deleting the spaces). Make the string lowercase
   searchedItem = searchedItem.replace(/\s+/g, "").toLowerCase();
 
-  // run an AJAX GET-request for our servers api,
-  // including the user's character in the url
+
    $.get("/api/inventory-view-all" + searchedItem, function(data) {
     // log the data to our console
     console.log(data);
@@ -92,4 +91,4 @@ listInventory()
 
 });
 
-// });
+});

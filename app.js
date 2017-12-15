@@ -5,7 +5,8 @@ const express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , api = require('./routes/api-routes');
 //var methodOverride = require('method-override');
 const session = require('express-session'); //needed for Passport authentication
 // var passport = require("./config/passport"); //needed for Passport authentication
@@ -58,14 +59,13 @@ app.get('/home/logout', user.logout);//call for logout
 app.get('/home/stockcontrol',user.stockcontrol);
 app.get('/home/inventory',user.inventory);
 app.get('/home/orders',user.orders);
+app.get('/home/api/inventory', api);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("public"));
-require("./routes/api-routes.js")(app);
+// require("./routes/api-routes.js")(app);
 
 db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
