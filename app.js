@@ -57,15 +57,15 @@ app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
 // app.get('/home/profile',user.profile);//to render users profile
 app.get('/home/stockcontrol',user.stockcontrol);
-app.get('/home/inventory',user.inventory);
+app.get('/inventory',user.inventory);
 app.get('/home/orders',user.orders);
-app.get('/home/api/inventory', api);
+// app.get('/home/api/inventory', api.api_inventory);
 
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("public"));
-// require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
