@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
 
+	var data = [];
 
-  var data = []
+
 
 // var data = [{
 //   product: "wine",
@@ -21,7 +22,18 @@ $(document).ready(function() {
 //   val: 400
 // }];
 
-function createChart () {
+$.get("/api/favorites", function (response){
+  var data = []
+  for (var i = 0; i < response.length; i++) {
+     var quantity = response[i].quantity;
+     var description = response[i].description; 
+     data.push("product: " + description + ",  val: " + quantity);  
+  }
+  console.log(data);
+  });
+
+
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 300 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
@@ -68,24 +80,7 @@ svg.selectAll("rect").transition()
     .delay(function(d, i) { return i * 10; })
     .attr("r", function(d) { return Math.sqrt(d * 1000); });
 
-}
 
-function getData () {
-$.get("/api/favorites", function (response){
-  for (var i = 0; i < response.length; i++) {
-     var quantity = response[i].quantity;
-     var description = response[i].description; 
-     data.push({product: description,  val: quantity});  
-  }
-  createChart();
-  console.log(data);
-  });
-}
-
-
-
-
-getData();
    
 
 });
