@@ -1,30 +1,35 @@
 $(document).ready(function() {
 
 
-	var data;
+	var data = [];
 
 
 
-var data = [{
-  product: "wine",
-  val: 5
-}, {
-  product: "cheese",
-  val: 80
-}, {
-  product: "plate",
-  val: 1
-}, {
-  product: "fork",
-  val: 4
-}, {
-  product: "eggs",
-  val: 400
-}];
+// var data = [{
+//   product: "wine",
+//   val: 5
+// }, {
+//   product: "cheese",
+//   val: 80
+// }, {
+//   product: "plate",
+//   val: 1
+// }, {
+//   product: "fork",
+//   val: 4
+// }, {
+//   product: "eggs",
+//   val: 400
+// }];
 
-$.get("home/api/favorites", function (data){
-  console.log("Favorite items:" + data);
-    data = data;
+$.get("/api/favorites", function (response){
+  var data = []
+  for (var i = 0; i < response.length; i++) {
+     var quantity = response[i].quantity;
+     var description = response[i].description; 
+     data.push("product: " + description + ",  val: " + quantity);  
+  }
+  console.log(data);
   });
 
 

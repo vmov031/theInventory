@@ -11,8 +11,6 @@ $.get("/api/total", function (data){
              
           }
 
-          console.log(totalInventory);
-
     $("#stock").text(totalInventory);
   });
 

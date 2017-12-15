@@ -16,7 +16,7 @@ module.exports = function(app) {
             });
         });
 
-        app.get("home/api/favorites", function(req, res) {
+        app.get("/api/favorites", function(req, res) {
             // findAll returns all entries in a specific 
             db.Inventory.findAll({
                 where: {
@@ -25,10 +25,11 @@ module.exports = function(app) {
                 },
             }).then(function(data) {
                 res.json(data);
+                console.log(data);
             });
         });
 
-        app.get("home/api/low", function(req, res) {
+        app.get("/api/low", function(req, res) {
           db.Inventory.findAll({
             where: {
               quantity: {
@@ -43,7 +44,6 @@ module.exports = function(app) {
         app.get("/api/total", function(req, res) {
           db.Inventory.findAll({}).then(function(data) {
             res.json(data);
-            console.log(data);
         
         });
     });
