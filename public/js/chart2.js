@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var data;
 
 
+
 var data = [{
   product: "wine",
   val: 5
@@ -21,10 +22,11 @@ var data = [{
   val: 400
 }];
 
-// $.get("home/api/dashboard", function (data){
-//   console.log("Favorite items:" + data);
-//     favorite = data;
-//   });
+$.get("home/api/favorites", function (data){
+  console.log("Favorite items:" + data);
+    data = data;
+  });
+
 
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},

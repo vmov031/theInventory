@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	var data;
+	var lowItems;
 
-// $.get("home/api/dashboard", function (data){
-// 	console.log("Favorite items:" + data);
-// 		data = data;
-// 	});
+$.get("home/api/low", function (data){
+	console.log("Favorite items:" + data);
+		lowItems = data;
+	});
 
 var data = [{
   product: "wine",
@@ -23,6 +23,25 @@ var data = [{
   val: 400
 }];
 
+
+
+
+var data = [{
+  product: "wine",
+  val: 5
+}, {
+  product: "cheese",
+  val: 80
+}, {
+  product: "plate",
+  val: 1
+}, {
+  product: "fork",
+  val: 4
+}, {
+  product: "eggs",
+  val: 400
+}];
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 300 - margin.left - margin.right,
