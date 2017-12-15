@@ -41,17 +41,17 @@ function listInventory() {
             console.log("items: " + data);
             inventory = data;
           }).done(function(inventorydata) {
-
-            var inventoryTable = $("<div>");
-          inventoryTable.addClass("table");
-         $("#inventory-table").append(inventoryTable);
+          for (var i = 0; i < inventorydata.length; i++) {
+              $("#inventory-table").append("<tr><td>" + inventorydata[i].product_code + "</td><td>" + inventorydata[i].vendor + "</td><td>" + inventorydata[i].description + "</td><td>" + inventorydata[i].SF_Box + "</td><td>" + inventorydata[i].dimension + "</td><td>" + inventorydata[i].collection +"</td><td>" + inventorydata[i].quantity + "</td><td>" + inventorydata[i].wh2 + "</td><td>" + inventorydata[i].wh3 + "</td><td>" + inventorydata[i].total + "</td><td>" + inventorydata[i].dimension + location);
+              
              // product_code.val(data.product_code),
              // description.val(data.description),
              // SF_Box.val(data.SF_Box),
              // dimension.val(data.dimension),
              // quantity.val(data.quantity),
              // total.val(data.total)
-           })
+           }
+          })
         }; 
 
 listInventory()
