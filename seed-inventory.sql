@@ -5,3 +5,7 @@ VALUES 	("wmbd",  "12MM White Mocha", "15.10", "12 x 165 x 1215mm", 113, 113, "n
 		("sm", "12MM Siberian Maple", "21.96", "12 x 125 x 1215mm", 728, 728, "north", NOW(), NOW()), 
 		("SR", "Eng. Hs. Havea Sumatra Ruby", "9.85", "9/16 x 5 1/2", 250, 250, "north", NOW(), NOW()), 
 		("SmB", "Eng.Sm.Birch", "19.38", "3/5 x 4.9 x RL", 72, 72, "north", NOW(), NOW());
+
+
+INSERT INTO users (user_name, password, first_name, last_name, mob_no, position, createdAt, updatedAt)
+VALUES ("dianna", "dianna", "dianna", "simmons", "1234567890", "developer", NOW(), NOW()), ("vanessa", "vanessa", "vanessa", "montero", "1234567890", "developer", NOW(), NOW());
