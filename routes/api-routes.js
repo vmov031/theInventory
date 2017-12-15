@@ -40,9 +40,10 @@ module.exports = function(app) {
                     });
 
                 });
-        app.get("home/api/total", function(req, res) {
+        app.get("/api/total", function(req, res) {
           db.Inventory.findAll({}).then(function(data) {
             res.json(data);
+            console.log(data);
         
         });
     });
