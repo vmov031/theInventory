@@ -38,6 +38,9 @@ module.exports = function(app) {
                     }).then(function(data) {
                         res.json(data);
                     });
+
+                });
+        
         app.get("home/api/total", function(req, res) {
           db.Inventory.findAll({}).then(function(data) {
             res.json(data);
@@ -58,6 +61,5 @@ module.exports = function(app) {
             res.json(dbUser);
         });
     });
-
 
 };
