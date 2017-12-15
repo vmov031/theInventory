@@ -1,18 +1,20 @@
 /**
 * Module dependencies.
 */
-var express = require('express')
+const express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
 //var methodOverride = require('method-override');
-var session = require('express-session'); //needed for Passport authentication
+const session = require('express-session'); //needed for Passport authentication
 // var passport = require("./config/passport"); //needed for Passport authentication
-var app = express();
-var mysql      = require('mysql');
-var bodyParser=require("body-parser");
-var connection = mysql.createConnection({
+const app = express();
+const db = require("./models");
+// const Sequelize = require('sequelize');
+const mysql      = require('mysql');
+const bodyParser=require("body-parser");
+const connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
               password : '',
@@ -23,10 +25,9 @@ var connection = mysql.createConnection({
  
 connection.connect();
 
-// Requiring our models for syncing
-// var db = require("./models");
-
 global.db = connection;
+// var PORT = process.env.PORT || 8080;
+
  
 // all environments
 app.set('port', process.env.PORT || 8080);
@@ -56,5 +57,19 @@ app.get('/home/logout', user.logout);//call for logout
 app.get('/home/stockcontrol',user.stockcontrol);
 app.get('/home/inventory',user.inventory);
 app.get('/home/orders',user.orders);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(express.static("public"));
+require("./routes/api-routes.js")(app);
+
+// db.sequelize.sync({}).then(function() {
+//   app.listen(PORT, function() {
+//     console.log("App listening on PORT " + PORT);
+//   });
+// });
 //Middleware
 app.listen(8080)
