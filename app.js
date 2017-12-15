@@ -61,6 +61,43 @@ app.get('/home/inventory',user.inventory);
 app.get('/home/orders',user.orders);
 app.get('/home/api/inventory', api);
 
+app.put('/api/stockcontrol',  stockControl )
+
+function stockControl(res, req){
+  console.log('res SC', res.body)
+  const name = res.body.name
+  const locationFrom = res.body.locationFrom
+  const locationTo = res.body.locationTo
+  const amount = parseInt(res.body.amount)
+
+  db.Inventory
+    .findOne({
+        where: {
+            product_code: name
+        },
+    })
+    .then(function(data){
+      // console.log(data)
+      const product = data.dataValues
+      console.log(typeof product[locationFrom],typeof product[locationTo], typeof amount)
+
+      db.Inventory
+        .update(
+          { 
+            [locationFrom]: product[locationFrom] - amount,  
+            [locationTo]:  product[locationTo] + amount 
+          },
+          { where: { product_code: name } }
+        )
+        .then(function(update){
+          console.log('update', update)
+        })
+        .catch(function(err){
+          console.log('error', err)
+        })
+    })
+}
+
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
