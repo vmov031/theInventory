@@ -55,15 +55,7 @@ module.exports = function(app) {
           res.json(dbUser);
           console.log(dbUser);
         });
-        // db.User.findOne({
-        //     where: {
-        //         user_name: req.boby.user_name
-        //     }
-        //     // DO WE NEED THIS?
-        // }).then(function(dbUser) {
-        //     console.log("dbUser: " + dbUser);
-        //     res.json(dbUser);
-        // });
+
     });
 
 
