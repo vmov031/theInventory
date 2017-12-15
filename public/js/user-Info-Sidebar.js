@@ -5,22 +5,15 @@ $(document).ready(function() {
     // Function for retrieving authors and getting them ready to be rendered to the page
     // NEED TO CHECK ROUTE
     function getUser() {
-        $.get("/api/user", userData)
-            .then(insertUserInfo;)
+    	console.log("is this working?");
+        $.get("/api/user")
+            .then(function(userInfo){
+            	insertUserInfo(userInfo);
+            	console.log(userInfo);
+            });
+            
     }
 
-
-    // THIS GOES IN THE API-ROUTES
-    app.post("/api/user", function(req, res) {
-        db.User.findOne({
-            where: {
-                id = req.session.id
-            },
-            // DO WE NEED THIS?
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        });
-    });
 
     // Function inserting user info into sidebar.ejs
     function insertUserInfo(userData) {
@@ -32,7 +25,6 @@ $(document).ready(function() {
             "<p>username: <span id='username'><strong>" + userData.username + "</strong></span></p>" + 
             "</center>"
         );
-    }
-
-
+        console.log(userData);
+    };
 });

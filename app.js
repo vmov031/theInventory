@@ -11,7 +11,7 @@ const session = require('express-session'); //needed for Passport authentication
 // var passport = require("./config/passport"); //needed for Passport authentication
 const app = express();
 const db = require("./models");
-// const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const mysql      = require('mysql');
 const bodyParser=require("body-parser");
 const connection = mysql.createConnection({
@@ -26,17 +26,18 @@ const connection = mysql.createConnection({
 connection.connect();
 
 global.db = connection;
-// var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8080;
 
  
 // all environments
-app.set('port', process.env.PORT || 8080);
+// app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use("/css",express.static(__dirname + "/css"));
+app.use("/js",express.static(__dirname + "/js"));
 app.use(session({
               secret: 'keyboard cat',
               resave: false,
@@ -66,10 +67,10 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
 
-// db.sequelize.sync({}).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
+db.sequelize.sync({}).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
 //Middleware
-app.listen(8080)
+// app.listen(8080)
