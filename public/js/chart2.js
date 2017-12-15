@@ -4,31 +4,33 @@ $(document).ready(function() {
 	var data;
 
 
-// var data = [{
-//   product: "wine",
-//   val: 5
-// }, {
-//   product: "cheese",
-//   val: 80
-// }, {
-//   product: "plate",
-//   val: 1
-// }, {
-//   product: "fork",
-//   val: 4
-// }, {
-//   product: "eggs",
-//   val: 400
-// }];
 
-$.get("home/api/dashboard", function (data){
+var data = [{
+  product: "wine",
+  val: 5
+}, {
+  product: "cheese",
+  val: 80
+}, {
+  product: "plate",
+  val: 1
+}, {
+  product: "fork",
+  val: 4
+}, {
+  product: "eggs",
+  val: 400
+}];
+
+$.get("home/api/favorites", function (data){
   console.log("Favorite items:" + data);
-    favorite = data;
+    data = data;
   });
 
 
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 400 - margin.left - margin.right,
+    width = 300 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
 // set the ranges
@@ -38,7 +40,7 @@ var x = d3.scaleBand()
 var y = d3.scaleLinear()
           .range([height, 0]);
           
-var svg = d3.select("#two").append("svg")
+var svg = d3.select("#chartTwo").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -76,4 +78,4 @@ svg.selectAll("rect").transition()
 
    
 
-}
+});
