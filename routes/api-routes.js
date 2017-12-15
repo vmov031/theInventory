@@ -52,15 +52,12 @@ module.exports = function(app) {
     // For user info in sidebar
     app.get("/api/user", function(req, res) {
         console.log("session ID: " + req.session.id);
-        db.User.findOne({
-            where: {
-                id: req.session.id
-            }
-            // DO WE NEED THIS?
-        }).then(function(dbUser) {
-            console.log("dbUser: " + dbUser);
-            res.json(dbUser);
+
+        db.User.findAll({}).then(function(dbUser) {
+          res.json(dbUser);
+          console.log(dbUser);
         });
+
     });
 
 };
