@@ -5,7 +5,7 @@ $(document).ready(function() {
     // Function for retrieving authors and getting them ready to be rendered to the page
     // NEED TO CHECK ROUTE
     function getUser() {
-    	console.log("is this working?");
+    	console.log("If you see this, then the getUser() is working");
         $.get("/api/user")
             .then(function(userInfo){
             	insertUserInfo(userInfo);
