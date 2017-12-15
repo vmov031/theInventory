@@ -1,21 +1,23 @@
 $(document).ready(function() {
   // Getting references to our form and input
-  var productID = $(".product-id");
-  var quantityInput = $(".quantity");
-  var month = $(".month");
-  var date = $(".date");
-  var year = $(".year");
+  var productID = $("#product-id");
+  var quantityInput = $("#quantity");
+  var month = $("#month");
+  var date = $("#date");
+  var year = $("#year");
   // Our new orders will go inside the orderContainer
   var orderContainer = $(".order-container");
   // Adding event listeners for receive and send items
-  $(orderForm).on("submit", ".receive", handleReceiveOrder);
-  $(orderForm).on("submit", ".send", handleSendOrder);
+  $('#receive').click(handleReceiveOrder);
+  $('#send').click(handleSendOrder);
 
   // Our initial orders array
   var orderHistory = [];
 
   function handleReceiveOrder(event) {
     event.preventDefault();
+    console.log('handleReceiveOrder')
+    console.log('inventory', productID.val().trim(), quantityInput.val().trim() , month.val(),  date.val(),  year.val())
     // Wont submit the order if we are missing product-id, quantity month , date and year
     if (!productID.val().trim() || !quantityInput.val().trim() || !month.val()  || !date.val()  || !year.val()) {
       return;
@@ -27,6 +29,8 @@ $(document).ready(function() {
 
   function handleSendOrder(event) {
     event.preventDefault();
+    console.log('handleSendOrder')
+    console.log('inventory', productID.val().trim(), quantityInput.val().trim() , month.val(),  date.val(),  year.val())
      // Wont submit the order if we are missing product-id, quantity month , date and year
     if (!productID.val().trim() || !quantityInput.val().trim() || !month.val()  || !date.val()  || !year.val()) {
       return;
