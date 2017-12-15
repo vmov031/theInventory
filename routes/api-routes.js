@@ -40,7 +40,10 @@ module.exports = function(app) {
                     });
 
                 });
+<<<<<<< HEAD
         
+=======
+>>>>>>> 8a2846e66322327059a3d1772a98b16334dea604
         app.get("home/api/total", function(req, res) {
           db.Inventory.findAll({}).then(function(data) {
             res.json(data);
