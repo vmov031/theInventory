@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
 
-	var favoriteItems;
+	var data;
+
 
 
 var data = [{
@@ -23,8 +24,9 @@ var data = [{
 
 $.get("home/api/favorites", function (data){
   console.log("Favorite items:" + data);
-    favoriteItems = data;
+    data = data;
   });
+
 
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},

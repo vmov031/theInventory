@@ -6,6 +6,25 @@ $.get("home/api/low", function (data){
 		lowItems = data;
 	});
 
+var data = [{
+  product: "wine",
+  val: 5
+}, {
+  product: "cheese",
+  val: 80
+}, {
+  product: "plate",
+  val: 1
+}, {
+  product: "fork",
+  val: 4
+}, {
+  product: "eggs",
+  val: 400
+}];
+
+
+
 
 var data = [{
   product: "wine",
