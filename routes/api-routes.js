@@ -8,7 +8,7 @@ var total = 0;
 module.exports = function(app) {
 
         // GET route for getting all of the todos
-        app.get("home/api/inventory", function(req, res) {
+        app.get("/home/api/inventory", function(req, res) {
             // findAll returns all entries for a table when used with no options
             db.Inventory.findAll({}).then(function(dbInventory) {
                 // We have access to the todos as an argument inside of the callback function
@@ -42,6 +42,7 @@ module.exports = function(app) {
 
                 });
         app.get("/api/total", function(req, res) {
+
           db.Inventory.findAll({}).then(function(data) {
             res.json(data);
         
@@ -51,16 +52,12 @@ module.exports = function(app) {
     // For user info in sidebar
     app.get("/api/user", function(req, res) {
         console.log("session ID: " + req.session.id);
-        db.User.findOne({
-            where: {
-                id: req.session.id
-            }
-            // DO WE NEED THIS?
-        }).then(function(dbUser) {
-            console.log("dbUser: " + dbUser);
-            res.json(dbUser);
-        });
-    });
 
+        db.User.findAll({}).then(function(dbUser) {
+          res.json(dbUser);
+          console.log(dbUser);
+        });
+
+    });
 
 };

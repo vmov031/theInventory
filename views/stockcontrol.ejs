@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Sample Site</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/jannaheader.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jannaheader.css">
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -20,8 +21,8 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-1">From: </div>
                 <div class="dropdown col-xs-6 col-sm-4">
-                    <select>
-                        <option value="wh1">Warehouse 1</option>
+                    <select id="locationfrom">
+                        <option value="quantity">Warehouse 1</option>
                         <option value="wh2">Warehouse 2</option>
                         <option value="wh3">Warehouse 3</option>
                         <option value="wh4">Warehouse 4</option>
@@ -30,8 +31,8 @@
                 </div>
                 <div class="col-xs-6 col-sm-1">To: </div>
                 <div class="dropdown col-xs-6 col-sm-4">
-                    <select>
-                        <option value="wh1">Warehouse 1</option>
+                    <select id="locationto">
+                        <option value="quantity">Warehouse 1</option>
                         <option value="wh2">Warehouse 2</option>
                         <option value="wh3">Warehouse 3</option>
                         <option value="wh4">Warehouse 4</option>
@@ -63,7 +64,7 @@
                                         <input id="name" class="form-control" placeholder="Type in Item Name">
                                     </td>
                                     <td>
-                                        <input id="name" class="form-control" placeholder="Type in Quantity">
+                                        <input id="amount" class="form-control" placeholder="Type in Quantity">
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,6 +111,39 @@
         </div>
         <!--Transfer Button-->
         <div class="container" align="center">
-            <button type="button" class="btn btn-default">Transfer Inventory</button>
+            <button type="button" class="btn btn-default" id="transfer">Transfer Inventory</button>
         </div>
+        
+        <script type="text/javascript">
+        $(document).ready(function() {
+            // Getting references to our form and input
+
+            $("#transfer").on("click", function() {
+
+                var locationfrom = $("#locationfrom").val();
+                var locationto = $("#locationto").val();
+                var name = $("#name").val().trim();
+                var amount = $("#amount").val().trim();
+
+                    console.log(locationfrom + locationto + name + amount + transfer)
+                    var data = {
+                    locationFrom: locationfrom,
+                    locationTo: locationto,
+                    name: name,
+                    amount: parseInt(amount)
+                }
+
+                $.ajax({
+                  url: '/api/stockcontrol',
+                  type: 'PUT',
+                  data: data,
+                  success: function(data) {
+                    alert('Load was performed.');
+                  }
+                });
+            });
+
+
+        });
+        </script>
         <%- include footer %>
