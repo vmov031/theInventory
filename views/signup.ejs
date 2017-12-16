@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Sample Site</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,43 +29,43 @@
                                 <div class="form-group">
                                     <label for="first_name" class="col-md-3 control-label">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                                        <input type="text" class="form-control" id="first_name" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-md-3 control-label">Last Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                                        <input type="text" class="form-control" id="last_name" placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="mob_no" class="col-md-3 control-label">Mobile Number</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="mob_no" placeholder="Mobile Number">
+                                        <input type="text" class="form-control" id="mob_no" placeholder="Mobile Number">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="user_name" class="col-md-3 control-label">User Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="user_name" placeholder="User Name">
+                                        <input type="text" class="form-control" id="user_name" placeholder="User Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="password" placeholder="Password">
+                                        <input type="password" class="form-control" id="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="position" class="col-md-3 control-label">Position</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="position" placeholder="position">
+                                        <input type="text" class="form-control" id="position" placeholder="position">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <!-- Button -->
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
                                     </div>
                                 </div>
                     </form>
@@ -73,6 +73,50 @@
             </div>
         </div>
     </div>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            // Getting references to our form and input
+
+            $("#btn-signup").on("click", function() {
+
+                var first_name = $("#first_name").val().trim();
+                var last_name = $("#last_name").val().trim();
+                var mob_no = $("#mob_no").val().trim();
+                var user_name = $("#user_name").val().trim();
+                var password = $("#password").val().trim();
+                var position = $("#position").val().trim();
+                // var name2 = $("#name2").val().trim();
+                // var amount2 = $("#amount2").val().trim();
+
+                console.log(first_name + last_name + mob_no+ user_name+ password+ position)
+                var data = {
+        first_name: first_name,
+        user_name: user_name,
+        last_name: last_name,
+        mob_no: mob_no,
+        password: password,
+        position: position
+
+                    // name2: name2,
+                    // amount2: parseInt(amount2)
+                }
+
+                $.ajax({
+                    url: '/api/createUser',
+                    type: 'POST',
+                    data: data,
+
+                    success: function(data) {
+                        alert('Load was performed.');
+                    }
+                });
+            });
+
+
+        });
+        </script>
+
 </body>
 
 </html>
