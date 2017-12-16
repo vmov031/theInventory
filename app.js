@@ -62,10 +62,10 @@ app.get('/home/orders', user.orders);
 // app.get('/home/api/inventory', api.api_inventory);
  
 
- // HI SHAR, THIS NOW UPDATES THE COLUMN TOTAL when you click 
-app.put('/api/inventoryorders', Orders)
+//THIS NOW UPDATES THE COLUMN TOTAL when you click 
+app.put('/api/receiveorders', receiveOrders)
 
-function Orders(res, req) {
+function receiveOrders(res, req) {
 
     const ordersid = res.body.ordersid
     const ordersquantity = parseInt(res.body.ordersquantity)
@@ -87,7 +87,45 @@ function Orders(res, req) {
             db.Inventory
                 .update({
 
-                        total: ordersquantity + total
+                        total: total + ordersquantity
+                    }, // [locationFrom]: product[locationFrom] - amount,  
+
+                    { where: { product_code: ordersid } }
+                )
+                .then(function(update) {
+                    console.log('update', update)
+                })
+                .catch(function(err) {
+                    console.log('error', err)
+                })
+        })
+}
+
+app.put('/api/sendorders', sendOrders)
+
+function sendOrders(res, req) {
+
+    const ordersid = res.body.ordersid
+    const ordersquantity = parseInt(res.body.ordersquantity)
+    const ordersmonth = res.body.ordersmonth
+    const ordersday = res.body.ordersday
+    const ordersyear = res.body.ordersyear
+
+    db.Inventory
+        .findOne({
+            where: {
+                product_code: ordersid
+            },
+        })
+        .then(function(data) {
+            // console.log(data)
+            const product = data.dataValues
+            // console.log(typeof product[locationFrom],typeof product[locationTo], typeof amount)
+
+            db.Inventory
+                .update({
+
+                        total: total - ordersquantity
                     }, // [locationFrom]: product[locationFrom] - amount,  
 
                     { where: { product_code: ordersid } }

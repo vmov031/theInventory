@@ -374,7 +374,7 @@
                 var ordersday = $("#ordersday").val();
                 var ordersyear = $("#ordersyear").val();
 
-                    console.log(ordersid + ordersquantity + ordersday +ordersmonth + ordersyear + ordersreceive)
+                    console.log(ordersid + ordersquantity + ordersday + ordersmonth + ordersyear + ordersreceive)
                     var data = {
                     ordersday: ordersday,
                     ordersmonth: ordersmonth,
@@ -384,15 +384,41 @@
                 }
 
                 $.ajax({
-                  url: '/api/inventoryorders',
+                  url: '/api/receiveorders',
                   type: 'PUT',
                   data: data,
                   success: function(data) {
-                    alert('Load was performed.');
+                    alert('Received!');
                   }
                 });
             });
 
+            $("#orderssend").on("click", function() {
+
+                var ordersid = $("#ordersid").val().trim();
+                var ordersquantity = $("#ordersquantity").val().trim();
+                var ordersmonth = $("#ordersmonth").val();
+                var ordersday = $("#ordersday").val();
+                var ordersyear = $("#ordersyear").val();
+
+                    console.log(ordersid + ordersquantity + ordersday +ordersmonth + ordersyear + orderssend)
+                    var data = {
+                    ordersday: ordersday,
+                    ordersmonth: ordersmonth,
+                    ordersyear: ordersyear,
+                    ordersid: ordersid,
+                    ordersquantity: parseInt(ordersquantity)
+                }
+
+                $.ajax({
+                  url: '/api/sendorders',
+                  type: 'PUT',
+                  data: data,
+                  success: function(data) {
+                    alert('Sent!');
+                  }
+                });
+            });
 
         });
 
