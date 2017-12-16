@@ -60,10 +60,10 @@ app.get('/home/stockcontrol', user.stockcontrol);
 app.get('/home/inventory', user.inventory);
 app.get('/home/orders', user.orders);
 // app.get('/home/api/inventory', api.api_inventory);
- 
 
 //THIS NOW UPDATES THE COLUMN TOTAL when you click 
 app.put('/api/receiveorders', receiveOrders)
+
 
 function receiveOrders(res, req) {
 
@@ -139,8 +139,66 @@ function sendOrders(res, req) {
         })
 }
 
-// this is the end of inventoryorders
 
+app.post("/api/createUser", function(req, res) {
+
+    db.User.create({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            mob_no: req.body.mob_no,
+            user_name: req.body.user_name,
+            password: req.body.password,
+            position: req.body.position
+
+        }).then(function(dbUser) {
+
+            res.json(dbUser);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+});
+
+
+//start of create user
+// app.post('/api/createUser', createUser)
+
+// function stockControl(res, req) {
+//     console.log('res CU', res.body)
+//                 const first_name =res.body.first_name
+//                 const last_name = res.body.last_name
+//                 const mob_no = res.body.mob_no
+//                 const user_name = res.body.user_name
+//                 const password = res.body.password
+//                 const position = res.body.position
+
+//     db.Inventory
+//         .findOne({
+//             where: {
+//                 product_code: name
+//             },
+//         })
+//         .then(function(data) {
+//             // console.log(data)
+//             const product = data.dataValues
+//             console.log(typeof product[locationFrom], typeof product[locationTo], typeof amount)
+
+//             db.Inventory
+//                 .update({
+//                     [locationFrom]: product[locationFrom] - amount,
+//                     [locationTo]: product[locationTo] + amount
+
+
+//                 }, { where: { product_code: name} })
+//                 .then(function(update) {
+//                     console.log('update', update)
+//                 })
+//                 .catch(function(err) {
+//                     console.log('error', err)
+//                 })
+//         })
+
+//     }
 
 
 //start of stock control 
@@ -149,9 +207,11 @@ app.put('/api/stockcontrol', stockControl)
 function stockControl(res, req) {
     console.log('res SC', res.body)
     const name = res.body.name
+    // const name2 = res.body.name2
     const locationFrom = res.body.locationFrom
     const locationTo = res.body.locationTo
     const amount = parseInt(res.body.amount)
+    // const amount2 = parseInt(res.body.amount2)
 
     db.Inventory
         .findOne({
@@ -168,6 +228,8 @@ function stockControl(res, req) {
                 .update({
                     [locationFrom]: product[locationFrom] - amount,
                     [locationTo]: product[locationTo] + amount
+
+
                 }, { where: { product_code: name } })
                 .then(function(update) {
                     console.log('update', update)
@@ -176,6 +238,34 @@ function stockControl(res, req) {
                     console.log('error', err)
                 })
         })
+
+    // db.Inventory
+    // .findOne({
+    //     where: {
+    //         product_code: name2
+    //     },
+    // })
+    // .then(function(data) {
+    //     // console.log(data)
+    //     const product = data.dataValues
+    //     console.log(typeof product[locationFrom], typeof product[locationTo], typeof amount2)
+
+    //     db.Inventory
+    //         .update({
+    //             [locationFrom]: product[locationFrom] - amount2,
+    //             [locationTo]: product[locationTo] + amount2,
+
+
+    //         }, { where: { product_code: name2
+
+    //          } })
+    //         .then(function(update) {
+    //             console.log('update', update)
+    //         })
+    //         .catch(function(err) {
+    //             console.log('error', err)
+    //         })
+    // })
 }
 
 app.use(bodyParser.text());

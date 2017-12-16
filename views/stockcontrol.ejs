@@ -1,5 +1,4 @@
 <html lang="en">
-
 <%- include header %>
     <%- include sidebar %>
         <br>
@@ -54,10 +53,10 @@
                                 <tr>
                                     <td>2</td>
                                     <td>
-                                        <input id="name" class="form-control" placeholder="Type in Item Name">
+                                        <input id="name2" class="form-control" placeholder="Type in Item Name">
                                     </td>
                                     <td>
-                                        <input id="amount" class="form-control" placeholder="Type in Quantity">
+                                        <input id="amount2" class="form-control" placeholder="Type in Quantity">
                                     </td>
                                 </tr>
                             </tbody>
@@ -70,7 +69,6 @@
         <div class="container" align="center">
             <button type="button" class="btn btn-default" id="transfer">Transfer Inventory</button>
         </div>
-        
         <script type="text/javascript">
         $(document).ready(function() {
             // Getting references to our form and input
@@ -81,22 +79,26 @@
                 var locationto = $("#locationto").val();
                 var name = $("#name").val().trim();
                 var amount = $("#amount").val().trim();
+                // var name2 = $("#name2").val().trim();
+                // var amount2 = $("#amount2").val().trim();
 
-                    console.log(locationfrom + locationto + name + amount + transfer)
-                    var data = {
+                console.log(locationfrom + locationto + name + amount + transfer)
+                var data = {
                     locationFrom: locationfrom,
                     locationTo: locationto,
                     name: name,
                     amount: parseInt(amount)
+                    // name2: name2,
+                    // amount2: parseInt(amount2)
                 }
 
                 $.ajax({
-                  url: '/api/stockcontrol',
-                  type: 'PUT',
-                  data: data,
-                  success: function(data) {
-                    alert('Load was performed.');
-                  }
+                    url: '/api/stockcontrol',
+                    type: 'PUT',
+                    data: data,
+                    success: function(data) {
+                        alert('Load was performed.');
+                    }
                 });
             });
 
