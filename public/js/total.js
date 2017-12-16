@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
 	var totalInventory = 0;
-	var totalOrders;
-	var totalDelieveries;
+	var totalOrders = 0;
+	var totalDelieveries = 0;
 
 $.get("/api/total", function (data){
     
@@ -14,17 +14,16 @@ $.get("/api/total", function (data){
     $("#stock").text(totalInventory);
   });
 
-// $.get("home/api/dashboard", function (data){
-//   console.log("Favorite items:" + data);
-//     totalOrders = data;
-//     $("#received")
-//   });
+$.get("/api/incoming", function (response){
+	totalOrders = response.length;
+  	$("#received").text(totalOrders);
 
-// $.get("home/api/dashboard", function (data){
-//   console.log("Favorite items:" + data);
-//     totalDelieveries = data;
-//     $("#delivered")
-//   });
+  });
+
+$.get("/api/outgoing", function (response){
+  	totalDelieveries = response.length;
+   	$("#delievered").text(totalDelieveries);
+  });
 
 
 });
