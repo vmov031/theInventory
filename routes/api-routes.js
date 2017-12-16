@@ -84,4 +84,13 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/orderHistory", function (req, res) {
+
+        
+     db.History.findAll({}).then(function(data) {
+            res.json(data);
+        
+        });
+    });
+
 };
