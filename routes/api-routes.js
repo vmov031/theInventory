@@ -60,4 +60,28 @@ module.exports = function(app) {
 
     });
 
+    app.get("/api/incoming", function (req, res) {
+
+        db.History.findAll({
+            where: {
+                type: "incoming"
+            }
+
+        }).then(function(data) {
+            res.json(data);
+        });
+    });
+
+    app.get("/api/outgoing", function (req, res) {
+
+        db.History.findAll({
+            where: {
+                type: "outgoing"
+            }
+
+        }).then(function(data) {
+            res.json(data)
+        });
+    });
+
 };
