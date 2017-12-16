@@ -1,10 +1,17 @@
 $(document).ready(function() {
 
-var orders;
+var data = [];
+var may = 0;
 
-$.get("home/api/orderHistory", function (data){
-  console.log("Favorite items:" + data);
-    orders = data;
+$.get("/api/incoming", function (response){
+    for (var i = 0; i < response.length; i++) {
+     if (response[i].month === "May") {
+      may += response[i].quantity;
+     } 
+
+  }
+  console.log(may);
+  console.log(data);
   });
 
 var data = [
