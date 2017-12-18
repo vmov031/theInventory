@@ -1,72 +1,70 @@
 $(document).ready(function() {
-  // Getting references to our form and input
-  var productID = $("#product-id");
-  var quantityInput = $("#quantity");
-  var month = $("#month");
-  var date = $("#date");
-  var year = $("#year");
-  // Our new orders will go inside the orderContainer
-  var orderContainer = $(".order-container");
-  // Adding event listeners for receive and send items
-  $('#receive').click(handleReceiveOrder);
-  $('#send').click(handleSendOrder);
+    // Getting references to our form and input
+    var productID = $("#product-id");
+    var quantityInput = $("#quantity");
+    var month = $("#month");
+    var date = $("#date");
+    var year = $("#year");
+    // Our new orders will go inside the orderContainer
+    var orderContainer = $(".order-container");
+    // Adding event listeners for receive and send items
+    $('#receive').click(handleReceiveOrder);
+    $('#send').click(handleSendOrder);
 
-  // Our initial orders array
-  var orderHistory = [];
+    // Our initial orders array
+    var orderHistory = [];
 
-  function handleReceiveOrder(event) {
-    event.preventDefault();
-    console.log('handleReceiveOrder')
-    console.log('inventory', productID.val().trim(), quantityInput.val().trim() , month.val(),  date.val(),  year.val())
-    // Wont submit the order if we are missing product-id, quantity month , date and year
-    if (!productID.val().trim() || !quantityInput.val().trim() || !month.val()  || !date.val()  || !year.val()) {
-      return;
+    function handleReceiveOrder(event) {
+        event.preventDefault();
+        console.log('handleReceiveOrder')
+        console.log('inventory', productID.val().trim(), quantityInput.val().trim(), month.val(), date.val(), year.val())
+        // Wont submit the order if we are missing product-id, quantity month , date and year
+        if (!productID.val().trim() || !quantityInput.val().trim() || !month.val() || !date.val() || !year.val()) {
+            return;
+        } else {
+            receiveOrder();
+        }
     }
-    else {
-      receiveOrder();
+
+    function handleSendOrder(event) {
+        event.preventDefault();
+        console.log('handleSendOrder')
+        console.log('inventory', productID.val().trim(), quantityInput.val().trim(), month.val(), date.val(), year.val())
+        // Wont submit the order if we are missing product-id, quantity month , date and year
+        if (!productID.val().trim() || !quantityInput.val().trim() || !month.val() || !date.val() || !year.val()) {
+            return;
+        } else {
+            sendOrder();
+        }
     }
-  }
 
-  function handleSendOrder(event) {
-    event.preventDefault();
-    console.log('handleSendOrder')
-    console.log('inventory', productID.val().trim(), quantityInput.val().trim() , month.val(),  date.val(),  year.val())
-     // Wont submit the order if we are missing product-id, quantity month , date and year
-    if (!productID.val().trim() || !quantityInput.val().trim() || !month.val()  || !date.val()  || !year.val()) {
-      return;
+    // This function increase the quantity in our database
+    function receiveOrder(quantityInput) {
+        $.ajax({
+            method: "PUT",
+            url: "/orders",
+            data: orderHistory
+        }).then(function() {
+            var newQuantityAdd = quantity.val(data.quantity) + quantityInput;
+        }).done(createNewRow);
     }
-    else {
-      sendOrder();
+
+    // This function decrease the quantity in our database
+    function sendOrder(quantityInput) {
+        $.ajax({
+            method: "PUT",
+            url: "/orders",
+            data: orderHistory
+        }).then(function() {
+            var newQuantity = quantity.val(data.quantity) - quantityInput;
+        }).done(createNewRow);
     }
-  } 
 
-  // This function increase the quantity in our database
-  function receiveOrder(quantityInput) {
-    $.ajax({
-      method: "PUT",
-      url: "/orders",
-      data: orderHistory
-    }).then(function() {
-     var newQuantityAdd = quantity.val(data.quantity) + quantityInput;
-    }).done(createNewRow);
-  }
+    // This function constructs an orderHistory-item row
+    function createNewRow(orderHistory) {
 
-  // This function decrease the quantity in our database
-  function sendOrder(quantityInput) {
-    $.ajax({
-      method: "PUT",
-      url: "/orders",
-      data: orderHistory
-    }).then(function() {
-     var newQuantity = quantity.val(data.quantity) - quantityInput;
-    }).done(createNewRow);
-  }
+        $(".order-container").append("<li class='list-group-item order-item'>" + orderHistory.productID + " " + orderHistory.quantityInput + " " + orderHistory.month + " " + orderHistory.date + " " + orderHistory.year + "</li>")
 
-// This function constructs an orderHistory-item row
-  function createNewRow(orderHistory) {
+    }
 
-  $(".order-container").append( "<li class='list-group-item order-item'>" + orderHistory.productID +" "+ orderHistory.quantityInput + " "+ orderHistory.month + " " + orderHistory.date + " " + orderHistory.year + "</li>")
-
-  }
-
-  });
+});
