@@ -14,15 +14,21 @@ const app = express();
 const db = require("./models");
 const Sequelize = require('sequelize');
 const mysql = require('mysql');
+var connection;
 const bodyParser = require("body-parser");
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
 
-    database: 'tropical_inventory'
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
 
-});
+        database: 'tropical_inventory'
+
+    });
+};
 
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
