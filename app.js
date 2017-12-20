@@ -24,6 +24,17 @@ const connection = mysql.createConnection({
 
 });
 
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'tropical_inventory'
+    });
+};
+
 connection.connect();
 
 global.db = connection;
