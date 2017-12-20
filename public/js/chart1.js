@@ -2,49 +2,70 @@ $(document).ready(function() {
 
     var data = [];
     var may = 0;
+    var data = [{
+    name: "Incoming",
+    values: [
+    {date: "January", value: 0 }, 
+    {date: "February", value: 0}, 
+    {date: "March", value: 0 }, 
+    {date: "April", value: 0 },
+    {date: "May", value: 0 },
+    {date: "June", value: 0 },
+    {date: "July", value: 0 }, 
+    {date: "August", value: 0 }, 
+    {date: "September", value: 0 },
+    {date: "October", value: 0 },
+    {date: "November", value: 0 },
+    {date: "December", value: 0 }
+    ]
+}];
+// console.log(data[0].values[0].value);
 
     $.get("/api/incoming", function(response) {
         for (var i = 0; i < response.length; i++) {
-            if (response[i].month === "May") {
-                may += response[i].quantity;
+            if (response[i].month === "January") {
+               var newvlaue = data[0].values[0].value += response[i].quantity;
+               (data[0].values[0].value).push(newvlaue)
+            
             }
 
         }
-        console.log(may);
+        // console.log(may);
         console.log(data);
+        // console.log(response);
     });
 
-    var data = [{
-            name: "Incoming",
-            values: [
-                { date: "January 2017", price: "300" },
-                { date: "February 2017", price: "250" },
-                { date: "March 2017", price: "800" },
-                { date: "April 2017", price: "900" },
-                { date: "May 2017", price: "50" },
-                { date: "June 2017", price: "90" },
-                { date: "July 2017", price: "10" },
-                { date: "August 2017", price: "35" },
-                { date: "October 2017", price: "21" },
-                { date: "November 2017", price: "201" }
-            ]
-        },
-        {
-            name: "Outgoing",
-            values: [
-                { date: "January 2017", price: "100" },
-                { date: "February 2017", price: "110" },
-                { date: "March 2017", price: "145" },
-                { date: "April 2017", price: "241" },
-                { date: "May 2017", price: "101" },
-                { date: "June 2017", price: "90" },
-                { date: "July 2017", price: "10" },
-                { date: "August 2017", price: "35" },
-                { date: "October 2017", price: "21" },
-                { date: "November 2017", price: "201" }
-            ]
-        },
-    ];
+    // var data = [{
+    //         name: "Incoming",
+    //         values: [
+    //             { date: "January 2017", price: "300" },
+    //             { date: "February 2017", price: "250" },
+    //             { date: "March 2017", price: "800" },
+    //             { date: "April 2017", price: "900" },
+    //             { date: "May 2017", price: "50" },
+    //             { date: "June 2017", price: "90" },
+    //             { date: "July 2017", price: "10" },
+    //             { date: "August 2017", price: "35" },
+    //             { date: "October 2017", price: "21" },
+    //             { date: "November 2017", price: "201" }
+    //         ]
+    //     },
+    //     {
+    //         name: "Outgoing",
+    //         values: [
+    //             { date: "January 2017", price: "100" },
+    //             { date: "February 2017", price: "110" },
+    //             { date: "March 2017", price: "145" },
+    //             { date: "April 2017", price: "241" },
+    //             { date: "May 2017", price: "101" },
+    //             { date: "June 2017", price: "90" },
+    //             { date: "July 2017", price: "10" },
+    //             { date: "August 2017", price: "35" },
+    //             { date: "October 2017", price: "21" },
+    //             { date: "November 2017", price: "201" }
+    //         ]
+    //     },
+    // ];
 
     var width = 800;
     var height = 300;
