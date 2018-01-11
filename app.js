@@ -85,6 +85,7 @@ app.put('/api/receiveorders', receiveOrders)
 function receiveOrders(res, req) {
 
     const ordersid = res.body.ordersid
+    console.log('ordersid', ordersid)
     const ordersquantity = parseInt(res.body.ordersquantity)
     const ordersmonth = res.body.ordersmonth
     const ordersday = res.body.ordersday
@@ -97,8 +98,9 @@ function receiveOrders(res, req) {
             },
         })
         .then(function(data) {
-            // console.log(data)
+            console.log('data', data.dataValues)
             const product = data.dataValues
+            const total = product.total;
             // console.log(typeof product[locationFrom],typeof product[locationTo], typeof amount)
 
             db.Inventory
@@ -137,6 +139,7 @@ function sendOrders(res, req) {
         .then(function(data) {
             // console.log(data)
             const product = data.dataValues
+            const total = product.total;
             // console.log(typeof product[locationFrom],typeof product[locationTo], typeof amount)
 
             db.Inventory
