@@ -17,6 +17,13 @@ const mysql = require('mysql');
 var connection;
 const bodyParser = require("body-parser");
 
+//PASSPORT
+const passport = require("./config/passport");
+const isAuth = require("./config/middleware/isAuthenticated");
+const authCheck = require('./config/middleware/attachAuthenticationStatus');
+app.use(passport.initialize());
+//PASSPORT
+
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -36,7 +43,7 @@ if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: '',
+        password: 'Calamigos2015',
         database: 'tropical_inventory'
     });
 };

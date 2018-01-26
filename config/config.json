@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "Calamigos2015",
     "database": "tropical_inventory",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "Calamigos2015",
+    "database": "tropical_inventory",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
