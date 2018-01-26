@@ -44,7 +44,6 @@ module.exports = function(sequelize, DataTypes) {
         }, 
 
         //PASSPORT
-        {
         classMethods: {
           associate: function(models) {
             // associations can be defined here
