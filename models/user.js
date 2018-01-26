@@ -41,7 +41,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [500]
             }
-        }, {
+        }, 
+
+        //PASSPORT
+        {
         classMethods: {
           associate: function(models) {
             // associations can be defined here

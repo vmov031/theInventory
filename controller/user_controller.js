@@ -1,4 +1,4 @@
-var db = require('../models');
+const db = require('../models');
 
 //this is the users_controller.js file
 exports.registrationPage = function(req,res) {
